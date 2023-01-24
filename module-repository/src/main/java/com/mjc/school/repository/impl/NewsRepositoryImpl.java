@@ -17,7 +17,10 @@ public class NewsRepositoryImpl implements BaseRepository <News,Long> {
     private List<News> listNews = dataSource.getListNews();
     private ArrayList<Author> listAuthor = dataSource.getListAuthor();
 
-
+    public NewsRepositoryImpl(){
+        dataSource.loadNewsFromDataSource();
+        dataSource.loadAuthorsFromDataSource();
+    }
     public void loadDataFromDataSource() {
         dataSource.loadNewsFromDataSource();
         dataSource.loadAuthorsFromDataSource();
