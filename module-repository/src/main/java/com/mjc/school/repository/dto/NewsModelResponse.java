@@ -1,7 +1,6 @@
-package com.mjc.school.repository.model.dto;
+package com.mjc.school.repository.dto;
 
-import com.mjc.school.repository.model.entity.News;
-import com.mjc.school.repository.model.BaseEntity;
+import com.mjc.school.repository.entity.News;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,5 +47,51 @@ public class NewsModelResponse {
         return newsResult;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public LocalDateTime getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public void setLastUpdateTime(LocalDateTime lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
 }

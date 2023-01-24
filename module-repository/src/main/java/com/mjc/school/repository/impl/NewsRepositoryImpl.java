@@ -1,17 +1,17 @@
-package com.mjc.school.repository.model.impl;
+package com.mjc.school.repository.impl;
 
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.DataSource;
-import com.mjc.school.repository.model.dto.NewsModelResponse;
-import com.mjc.school.repository.model.entity.Author;
-import com.mjc.school.repository.model.entity.News;
+import com.mjc.school.repository.dto.NewsModelResponse;
+import com.mjc.school.repository.entity.Author;
+import com.mjc.school.repository.entity.News;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class RepositoryModelNewsImpl implements BaseRepository <News,Long> {
+public class NewsRepositoryImpl implements BaseRepository <News,Long> {
 
     private final DataSource dataSource = new DataSource();
     private List<News> listNews = dataSource.getListNews();

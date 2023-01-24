@@ -1,15 +1,13 @@
-package com.mjc.school.repository.model.entity;
+package com.mjc.school.repository.entity;
 
-import com.mjc.school.repository.model.dto.NewsModelRequest;
+import com.mjc.school.repository.dto.NewsModelRequest;
 import com.mjc.school.repository.model.BaseEntity;
-import com.mjc.school.repository.model.dto.NewsModelResponse;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+
 public class News implements BaseEntity<Long> {
 
     private static Long idGenerator = 0L;
@@ -43,6 +41,43 @@ public class News implements BaseEntity<Long> {
         setId(News.idGenerator);
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
 
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public void setLastUpdateTime(LocalDateTime lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public LocalDateTime getLastUpdateTime() {
+        return lastUpdateTime;
+    }
+
+    public Long getAuthorId() {
+        return authorId;
+    }
 }

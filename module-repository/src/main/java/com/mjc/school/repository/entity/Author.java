@@ -1,12 +1,7 @@
-package com.mjc.school.repository.model.entity;
-
+package com.mjc.school.repository.entity;
 
 import com.mjc.school.repository.model.BaseEntity;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class Author implements BaseEntity<Long> {
     private Long id;
     private String name;
@@ -21,5 +16,11 @@ public class Author implements BaseEntity<Long> {
         this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public String getName() {
+        return name;
+    }
 }

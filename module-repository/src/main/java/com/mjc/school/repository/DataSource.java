@@ -1,7 +1,7 @@
 package com.mjc.school.repository;
 
-import com.mjc.school.repository.model.entity.Author;
-import com.mjc.school.repository.model.entity.News;
+import com.mjc.school.repository.entity.Author;
+import com.mjc.school.repository.entity.News;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataSource {
-    private static final String FILE_PATH_DATA_SOURCE_NEWS = "module-repository\\src\\main\\java\\resources\\news.txt";
-    private static final String FILE_PATH_DATA_SOURCE_AUTHOR = "module-repository\\src\\main\\java\\resources\\author.txt";
+    private static final String FILE_PATH_DATA_SOURCE_NEWS = "module-repository\\src\\main\\resources\\newsdc.txt";
+    private static final String FILE_PATH_DATA_SOURCE_AUTHOR = "module-repository\\src\\main\\resources\\authordc.txt";
 
     private List<News> listNews = new ArrayList<>();
     private ArrayList<Author> listAuthor = new ArrayList<>();
@@ -29,12 +29,12 @@ public class DataSource {
     public void loadNewsFromDataSource() {
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH_DATA_SOURCE_NEWS))) {
-
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arrayLine = line.split(";");
+                System.out.println(arrayLine[0]);
                 News news = new News();
-                news.setId(Long.parseLong(arrayLine[0]));
+                news.setId(Long.valueOf(arrayLine[0]));
                 news.setTitle(arrayLine[1]);
                 news.setContent(arrayLine[2]);
                 news.setCreateDate(LocalDateTime.parse(arrayLine[3]));
