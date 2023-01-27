@@ -3,24 +3,27 @@ package com.mjc.school.repository.impl;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.DataSource;
 import com.mjc.school.repository.dto.NewsModelResponse;
-import com.mjc.school.repository.entity.Author;
-import com.mjc.school.repository.entity.News;
+import com.mjc.school.repository.entity.NewsModel;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class NewsRepositoryImpl implements BaseRepository <News,Long> {
+@Repository
+public class NewsRepository implements BaseRepository<NewsModel, Long> {
+
 
     private final DataSource dataSource = new DataSource();
-    private List<News> listNews = dataSource.getListNews();
-    private ArrayList<Author> listAuthor = dataSource.getListAuthor();
 
-    public NewsRepositoryImpl(){
+    public NewsRepository() {
         dataSource.loadNewsFromDataSource();
-        dataSource.loadAuthorsFromDataSource();
     }
+
+    private List<NewsModel> listNews = dataSource.getListNews();
+    ;
+
+
     public void loadDataFromDataSource() {
         dataSource.loadNewsFromDataSource();
         dataSource.loadAuthorsFromDataSource();
@@ -28,7 +31,7 @@ public class NewsRepositoryImpl implements BaseRepository <News,Long> {
 
 
     @Override
-    public List<News> readAll() {
+    public List<NewsModel> readAll() {
         try {
             NewsModelResponse newsModelResponse = new NewsModelResponse();
             listNews.forEach(x -> {
@@ -42,7 +45,7 @@ public class NewsRepositoryImpl implements BaseRepository <News,Long> {
     }
 
     @Override
-    public Optional<News> readById(Long id) {
+    public Optional<NewsModel> readById(Long id) {
         NewsModelResponse newsModelResponse = new NewsModelResponse();
         listNews.forEach(x -> {
             boolean b = x.getId().equals(id);
@@ -53,7 +56,7 @@ public class NewsRepositoryImpl implements BaseRepository <News,Long> {
     }
 
     @Override
-    public News create(News entity) {
+    public NewsModel create(NewsModel entity) {
         NewsModelResponse newsModelResponse = new NewsModelResponse();
         newsModelResponse.map(entity);
         newsModelResponse.print();
@@ -62,7 +65,7 @@ public class NewsRepositoryImpl implements BaseRepository <News,Long> {
     }
 
     @Override
-    public News update(News entity) {
+    public NewsModel update(NewsModel entity) {
         NewsModelResponse newsModelResponse = new NewsModelResponse();
         listNews.forEach(x -> {
             boolean b = x.getId().equals(entity.getId());
@@ -90,7 +93,7 @@ public class NewsRepositoryImpl implements BaseRepository <News,Long> {
 
     @Override
     public boolean existById(Long id) {
-        for (News news : listNews) {
+        for (NewsModel news : listNews) {
             if (news.getId().equals(id)) {
                 return true;
             }

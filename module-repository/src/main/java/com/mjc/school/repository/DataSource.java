@@ -1,7 +1,7 @@
 package com.mjc.school.repository;
 
-import com.mjc.school.repository.entity.Author;
-import com.mjc.school.repository.entity.News;
+import com.mjc.school.repository.entity.AuthorModel;
+import com.mjc.school.repository.entity.NewsModel;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,14 +14,14 @@ public class DataSource {
     private static final String FILE_PATH_DATA_SOURCE_NEWS = "module-repository\\src\\main\\resources\\newsdc.txt";
     private static final String FILE_PATH_DATA_SOURCE_AUTHOR = "module-repository\\src\\main\\resources\\authordc.txt";
 
-    private List<News> listNews = new ArrayList<>();
-    private ArrayList<Author> listAuthor = new ArrayList<>();
+    private List<NewsModel> listNews = new ArrayList<>();
+    private ArrayList<AuthorModel> listAuthor = new ArrayList<>();
 
-    public List<News> getListNews() {
+    public List<NewsModel> getListNews() {
         return listNews;
     }
 
-    public ArrayList<Author> getListAuthor() {
+    public ArrayList<AuthorModel> getListAuthor() {
         return listAuthor;
     }
 
@@ -32,8 +32,7 @@ public class DataSource {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arrayLine = line.split(";");
-                System.out.println(arrayLine[0]);
-                News news = new News();
+                NewsModel news = new NewsModel();
                 news.setId(Long.valueOf(arrayLine[0]));
                 news.setTitle(arrayLine[1]);
                 news.setContent(arrayLine[2]);
@@ -53,7 +52,7 @@ public class DataSource {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] arrayLine = line.split(";");
-                Author author = new Author();
+                AuthorModel author = new AuthorModel();
                 author.setId(Long.parseLong(arrayLine[0]));
                 author.setName(arrayLine[1]);
                 listAuthor.add(author);

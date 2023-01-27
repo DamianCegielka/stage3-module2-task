@@ -1,7 +1,7 @@
 package com.mjc.school.service.dto;
 
 import com.mjc.school.repository.dto.NewsModelResponse;
-import com.mjc.school.repository.entity.News;
+import com.mjc.school.repository.entity.NewsModel;
 
 import java.time.LocalDateTime;
 
@@ -81,7 +81,7 @@ public class NewsDtoResponse {
         this.setAuthorId(news.getAuthorId());
     }
 
-    public NewsDtoResponse map(News news) {
+    public NewsDtoResponse map(NewsModel news) {
         this.setId(news.getId());
         this.setTitle(news.getTitle());
         this.setContent(news.getContent());

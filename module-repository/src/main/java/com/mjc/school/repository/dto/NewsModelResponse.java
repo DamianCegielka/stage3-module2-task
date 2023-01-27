@@ -1,6 +1,6 @@
 package com.mjc.school.repository.dto;
 
-import com.mjc.school.repository.entity.News;
+import com.mjc.school.repository.entity.NewsModel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +27,7 @@ public class NewsModelResponse {
         System.out.println("authorId=" + this.getAuthorId() + "]");
     }
 
-    public void map(News news) {
+    public void map(NewsModel news) {
         this.setId(news.getId());
         this.setTitle(news.getTitle());
         this.setContent(news.getContent());
@@ -36,8 +36,8 @@ public class NewsModelResponse {
         this.setAuthorId(news.getAuthorId());
     }
 
-    public News mapToNews(){
-        News newsResult=new News();
+    public NewsModel mapToNews(){
+        NewsModel newsResult=new NewsModel();
         newsResult.setId(this.getId());
         newsResult.setTitle(this.getTitle());
         newsResult.setContent(this.getContent());

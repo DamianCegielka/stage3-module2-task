@@ -2,13 +2,11 @@ package com.mjc.school.repository.entity;
 
 import com.mjc.school.repository.dto.NewsModelRequest;
 import com.mjc.school.repository.model.BaseEntity;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 
-public class News implements BaseEntity<Long> {
+public class NewsModel implements BaseEntity<Long> {
 
     private static Long idGenerator = 0L;
     private Long id;
@@ -26,9 +24,9 @@ public class News implements BaseEntity<Long> {
         this.id = id;
     }
 
-    public News(NewsModelRequest newsDTOCreation) {
+    public NewsModel(NewsModelRequest newsDTOCreation) {
         idGenerator++;
-        this.setId(News.idGenerator);
+        this.setId(NewsModel.idGenerator);
         this.setTitle(newsDTOCreation.getTitle());
         this.setCreateDate(LocalDateTime.now());
         this.setLastUpdateTime(LocalDateTime.now());
@@ -36,9 +34,11 @@ public class News implements BaseEntity<Long> {
         this.setAuthorId(newsDTOCreation.getAuthorId());
     }
 
-    public News() {
+    public NewsModel() {
         idGenerator++;
-        setId(News.idGenerator);
+        setId(NewsModel.idGenerator);
+        this.setCreateDate(LocalDateTime.now());
+        this.setLastUpdateTime(LocalDateTime.now());
     }
 
     public void setTitle(String title) {
