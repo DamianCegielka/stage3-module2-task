@@ -44,7 +44,6 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     @Override
     public AuthorDtoResponse create(AuthorDtoRequest createRequest) {
         AuthorModel authorModel = mapAuthorDtoRequestToAuthorModel.map(createRequest);
-        System.out.println("ID SERVICE CREATE"+authorModel.getId());
         return mapAuthorModelToAuthorDtoResponse.map(repository.create(authorModel));
     }
 

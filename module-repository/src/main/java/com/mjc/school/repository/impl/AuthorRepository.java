@@ -3,6 +3,7 @@ package com.mjc.school.repository.impl;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.DataSource;
 import com.mjc.school.repository.dto.AuthorModelResponse;
+import com.mjc.school.repository.dto.NewsModelResponse;
 import com.mjc.school.repository.entity.AuthorModel;
 import org.springframework.stereotype.Repository;
 
@@ -43,25 +44,21 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     @Override
     public Optional<AuthorModel> readById(Long id) {
-        final AuthorModel[] author = {new AuthorModel()};
+        AuthorModelResponse authorModelResponse = new AuthorModelResponse();
         listAuthor.forEach(x -> {
             boolean b = x.getId().equals(id);
-            if (b) {
-                author[0] = listAuthor.get(Math.toIntExact(id));
-            }
+            if (b) authorModelResponse.map(x);
+            if (b) authorModelResponse.print();
         });
-
-        return Optional.of(author[0]);
+        return Optional.ofNullable(authorModelResponse.mapToAuthorModel());
     }
 
     @Override
     public AuthorModel create(AuthorModel entity) {
         AuthorModelResponse authorModelResponse = new AuthorModelResponse();
-        System.out.println("AUTHOR REPOSITORY" + entity.getId());
         authorModelResponse.map(entity);
         authorModelResponse.print();
         listAuthor.add(entity);
-        System.out.println("AUTHOR REPOSITORY" + entity.getId());
         return authorModelResponse.mapToAuthorModel();
     }
 

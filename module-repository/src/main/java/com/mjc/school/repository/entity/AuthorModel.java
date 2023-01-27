@@ -28,6 +28,11 @@ public class AuthorModel implements BaseEntity<Long> {
         this.setCreateDate(LocalDateTime.now());
         this.setLastUpdateTime(LocalDateTime.now());
     }
+    public AuthorModel(String empty) {
+        this.setId(AuthorModel.idGenerator);
+        this.setCreateDate(LocalDateTime.now());
+        this.setLastUpdateTime(LocalDateTime.now());
+    }
 
 
     public LocalDateTime getCreateDate() {

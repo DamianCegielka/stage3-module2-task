@@ -37,7 +37,7 @@ public class NewsModelResponse {
     }
 
     public NewsModel mapToNews(){
-        NewsModel newsResult=new NewsModel();
+        NewsModel newsResult=new NewsModel("null");
         newsResult.setId(this.getId());
         newsResult.setTitle(this.getTitle());
         newsResult.setContent(this.getContent());

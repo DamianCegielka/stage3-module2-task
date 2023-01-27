@@ -27,7 +27,7 @@ public class AuthorModelResponse {
     }
 
     public AuthorModel mapToAuthorModel() {
-        AuthorModel authorResult = new AuthorModel();
+        AuthorModel authorResult = new AuthorModel("empty model");
         authorResult.setId(this.getId());
         authorResult.setName(this.getName());
         authorResult.setCreateDate(this.getCreateDate());

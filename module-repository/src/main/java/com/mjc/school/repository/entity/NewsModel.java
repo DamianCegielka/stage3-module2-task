@@ -40,6 +40,11 @@ public class NewsModel implements BaseEntity<Long> {
         this.setCreateDate(LocalDateTime.now());
         this.setLastUpdateTime(LocalDateTime.now());
     }
+    public NewsModel(String empty) {
+        setId(NewsModel.idGenerator);
+        this.setCreateDate(LocalDateTime.now());
+        this.setLastUpdateTime(LocalDateTime.now());
+    }
 
     public void setTitle(String title) {
         this.title = title;

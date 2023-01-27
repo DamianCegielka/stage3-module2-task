@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse, Long> {
@@ -36,8 +37,9 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
 
     @Override
     public NewsDtoResponse readById(Long id) {
-        if (repository.readById(id).isPresent()) {
-            return mapNewsModelToDtoResponse.map(repository.readById(id).get());
+        Optional<NewsModel> newsDtoResponse= repository.readById(id);
+        if (newsDtoResponse.isPresent()) {
+            return mapNewsModelToDtoResponse.map(newsDtoResponse.get());
         }
         return null;
     }
