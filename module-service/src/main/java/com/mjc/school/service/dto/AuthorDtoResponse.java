@@ -17,7 +17,6 @@ public class AuthorDtoResponse {
         return name;
     }
 
-
     public LocalDateTime getCreateDate() {
         return createDate;
     }
@@ -33,7 +32,6 @@ public class AuthorDtoResponse {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
@@ -51,22 +49,4 @@ public class AuthorDtoResponse {
         System.out.print("createDate=" + this.getCreateDate() + ",");
         System.out.print("lastUpdatedDate=" + this.getLastUpdateTime() + ",");
     }
-/*
-    public void map(AuthorModelResponse author) {
-        this.setId(author.getId());
-        this.setName(author.getTitle());
-        this.setCreateDate(author.getCreateDate());
-        this.setLastUpdateTime(author.getLastUpdateTime());
-    }
-
-    public NewsDtoResponse map(AuthorModel author) {
-        this.setId(author.getId());
-        this.setName(author.getName());
-        this.setCreateDate(author.getCreateDate());
-        this.setLastUpdateTime(author.getLastUpdateTime());
-        return this;
-    }
-
-
- */
 }

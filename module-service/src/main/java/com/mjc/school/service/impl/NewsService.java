@@ -3,6 +3,7 @@ package com.mjc.school.service.impl;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.entity.NewsModel;
 import com.mjc.school.service.BaseService;
+import com.mjc.school.service.Validator;
 import com.mjc.school.service.dto.NewsDtoRequest;
 import com.mjc.school.service.dto.NewsDtoResponse;
 import com.mjc.school.service.mapping.MapNewsDtoRequestToNewsModel;
@@ -22,6 +23,7 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
 
     private MapNewsModelToDtoResponse mapNewsModelToDtoResponse = new MapNewsModelToDtoResponse();
     private MapNewsDtoRequestToNewsModel mapNewsDtoRequestToNewsModel = new MapNewsDtoRequestToNewsModel();
+    private Validator validator=new Validator();
 
 
     public NewsService(BaseRepository<NewsModel, Long> repository) {
@@ -46,8 +48,14 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
 
     @Override
     public NewsDtoResponse create(NewsDtoRequest createRequest) {
-        NewsModel newsModel = mapNewsDtoRequestToNewsModel.map(createRequest);
-        return mapNewsModelToDtoResponse.map(repository.create(newsModel));
+        try {
+            validator.lengthBetween5And30Symbols(createRequest.getTitle());
+            validator.lengthBetween5And255Symbols(createRequest.getContent());
+            NewsModel newsModel = mapNewsDtoRequestToNewsModel.map(createRequest);
+            return mapNewsModelToDtoResponse.map(repository.create(newsModel));
+        }catch (Exception e){
+        }
+        return null;
     }
 
     @Override

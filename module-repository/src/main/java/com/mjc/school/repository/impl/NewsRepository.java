@@ -21,16 +21,6 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
 
     private List<NewsModel> listNews = dataSource.getListNews();
 
-
-/*
-    public void loadDataFromDataSource() {
-        dataSource.loadNewsFromDataSource();
-        dataSource.loadAuthorsFromDataSource();
-    }
-
-
- */
-
     @Override
     public List<NewsModel> readAll() {
         try {
@@ -69,10 +59,7 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
     public NewsModel update(NewsModel entity) {
         NewsModelResponse newsModelResponse = new NewsModelResponse();
         listNews.forEach(x -> {
-            System.out.println("SZUKANE ID "+entity.getId());
-            System.out.println("ID: "+x.getId());
             boolean b = x.getId().equals(entity.getId());
-            if (b) System.out.println("MAM");
             if (b) x.setTitle(entity.getTitle());
             if (b) x.setContent(entity.getContent());
             if (b) x.setAuthorId(entity.getAuthorId());

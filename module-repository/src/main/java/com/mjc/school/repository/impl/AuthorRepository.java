@@ -20,15 +20,6 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     public AuthorRepository() {
         dataSource.loadAuthorsFromDataSource();
     }
-/*
-
-    public void loadDataFromDataSource() {
-        dataSource.loadNewsFromDataSource();
-        dataSource.loadAuthorsFromDataSource();
-    }
-
- */
-
 
     @Override
     public List<AuthorModel> readAll() {
@@ -68,10 +59,7 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     public AuthorModel update(AuthorModel entity) {
         AuthorModelResponse authorModelResponse = new AuthorModelResponse();
         listAuthor.forEach(x -> {
-            System.out.println("SZUKANE ID " + entity.getId());
-            System.out.println("ID: " + x.getId());
             boolean b = x.getId().equals(entity.getId());
-            if (b) System.out.println("MAM");
             if (b) x.setName(entity.getName());
             if (b) x.setLastUpdateTime(LocalDateTime.now());
             if (b) authorModelResponse.map(x);

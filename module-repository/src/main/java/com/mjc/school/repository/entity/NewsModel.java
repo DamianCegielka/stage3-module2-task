@@ -2,7 +2,6 @@ package com.mjc.school.repository.entity;
 
 import com.mjc.school.repository.dto.NewsModelRequest;
 import com.mjc.school.repository.model.BaseEntity;
-
 import java.time.LocalDateTime;
 
 
@@ -15,10 +14,12 @@ public class NewsModel implements BaseEntity<Long> {
     private LocalDateTime createDate;
     private LocalDateTime lastUpdateTime;
     private Long authorId;
+
     @Override
     public Long getId() {
         return id;
     }
+
     @Override
     public void setId(Long id) {
         this.id = id;
@@ -40,6 +41,7 @@ public class NewsModel implements BaseEntity<Long> {
         this.setCreateDate(LocalDateTime.now());
         this.setLastUpdateTime(LocalDateTime.now());
     }
+
     public NewsModel(String empty) {
         setId(NewsModel.idGenerator);
         this.setCreateDate(LocalDateTime.now());

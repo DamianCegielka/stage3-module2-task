@@ -1,7 +1,6 @@
 package com.mjc.school.repository.entity;
 
 import com.mjc.school.repository.dto.AuthorModelRequest;
-import com.mjc.school.repository.dto.NewsModelRequest;
 import com.mjc.school.repository.model.BaseEntity;
 
 import java.time.LocalDateTime;
@@ -28,6 +27,7 @@ public class AuthorModel implements BaseEntity<Long> {
         this.setCreateDate(LocalDateTime.now());
         this.setLastUpdateTime(LocalDateTime.now());
     }
+
     public AuthorModel(String empty) {
         this.setId(AuthorModel.idGenerator);
         this.setCreateDate(LocalDateTime.now());
@@ -58,11 +58,10 @@ public class AuthorModel implements BaseEntity<Long> {
 
     @Override
     public void setId(Long id) {
-        if(id!=null) {
+        if (id != null) {
             this.id = id;
-        }
-        else
-            this.id=AuthorModel.idGenerator;
+        } else
+            this.id = AuthorModel.idGenerator;
     }
 
     public void setName(String name) {

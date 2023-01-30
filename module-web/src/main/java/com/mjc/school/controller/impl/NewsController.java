@@ -20,9 +20,7 @@ public class NewsController implements BaseController<NewsDtoRequest, NewsDtoRes
     }
 
     @Override
-    public NewsDtoResponse create(NewsDtoRequest createRequest) {
-        return service.create(createRequest);
-    }
+    public NewsDtoResponse create(NewsDtoRequest createRequest) { return service.create(createRequest);}
 
     @Override
     public List<NewsDtoResponse> readAll() { return service.readAll(); }
