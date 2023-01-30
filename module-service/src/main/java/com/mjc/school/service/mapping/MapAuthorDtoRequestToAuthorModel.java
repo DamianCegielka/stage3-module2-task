@@ -11,4 +11,11 @@ public class MapAuthorDtoRequestToAuthorModel {
         authorModel.setName(request.getName());
         return authorModel;
     }
+
+    public AuthorModel mapUpdate(AuthorDtoRequest request) {
+        AuthorModel authorModel = new AuthorModel("empty");
+        authorModel.setId(request.getId());
+        authorModel.setName(request.getName());
+        return authorModel;
+    }
 }

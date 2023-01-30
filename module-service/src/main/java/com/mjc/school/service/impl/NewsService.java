@@ -52,8 +52,8 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
 
     @Override
     public NewsDtoResponse update(NewsDtoRequest updateRequest) {
-        NewsModel newsModel = mapNewsDtoRequestToNewsModel.map(updateRequest);
-        return mapNewsModelToDtoResponse.map(repository.create(newsModel));
+        NewsModel newsModel = mapNewsDtoRequestToNewsModel.mapUpdate(updateRequest);
+        return mapNewsModelToDtoResponse.map(repository.update(newsModel));
     }
 
     @Override

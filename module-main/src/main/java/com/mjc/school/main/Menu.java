@@ -168,6 +168,7 @@ public class Menu {
         Long index = Long.valueOf(takeNumberFromKeyboard());
         NewsDtoRequest newsDtoRequest = askQuestionsToGetNewsDtoRequest();
         newsDtoRequest.setId(index);
+        System.out.println("MENU i zapisane id to: "+newsDtoRequest.getId());
         return newsDtoRequest;
     }
 

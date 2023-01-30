@@ -3,10 +3,10 @@ package com.mjc.school.repository.impl;
 import com.mjc.school.repository.BaseRepository;
 import com.mjc.school.repository.DataSource;
 import com.mjc.school.repository.dto.AuthorModelResponse;
-import com.mjc.school.repository.dto.NewsModelResponse;
 import com.mjc.school.repository.entity.AuthorModel;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,12 +20,14 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
     public AuthorRepository() {
         dataSource.loadAuthorsFromDataSource();
     }
-
+/*
 
     public void loadDataFromDataSource() {
         dataSource.loadNewsFromDataSource();
         dataSource.loadAuthorsFromDataSource();
     }
+
+ */
 
 
     @Override
@@ -64,8 +66,19 @@ public class AuthorRepository implements BaseRepository<AuthorModel, Long> {
 
     @Override
     public AuthorModel update(AuthorModel entity) {
-        listAuthor.get(Math.toIntExact(entity.getId())).setName(entity.getName());
-        return entity;
+        AuthorModelResponse authorModelResponse = new AuthorModelResponse();
+        listAuthor.forEach(x -> {
+            System.out.println("SZUKANE ID " + entity.getId());
+            System.out.println("ID: " + x.getId());
+            boolean b = x.getId().equals(entity.getId());
+            if (b) System.out.println("MAM");
+            if (b) x.setName(entity.getName());
+            if (b) x.setLastUpdateTime(LocalDateTime.now());
+            if (b) authorModelResponse.map(x);
+            if (b) authorModelResponse.print();
+
+        });
+        return authorModelResponse.mapToAuthorModel();
     }
 
     @Override

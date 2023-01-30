@@ -34,6 +34,7 @@ public class NewsController implements BaseController<NewsDtoRequest, NewsDtoRes
 
     @Override
     public NewsDtoResponse update(NewsDtoRequest updateRequest) {
+        System.out.println("ID W CONTROLERZE: "+ updateRequest.getId());
         return service.update(updateRequest);
     }
 

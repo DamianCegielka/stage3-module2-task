@@ -12,4 +12,13 @@ public class MapNewsDtoRequestToNewsModel {
         newsModel.setAuthorId(request.getAuthorId());
         return newsModel;
     }
+
+    public NewsModel mapUpdate(NewsDtoRequest request){
+        NewsModel newsModel=new NewsModel("null");
+        newsModel.setId(request.getId());
+        newsModel.setTitle(request.getTitle());
+        newsModel.setContent(request.getContent());
+        newsModel.setAuthorId(request.getAuthorId());
+        return newsModel;
+    }
 }

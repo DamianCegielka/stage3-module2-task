@@ -9,11 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Repository
 public class NewsRepository implements BaseRepository<NewsModel, Long> {
-
 
     private final DataSource dataSource = new DataSource();
 
@@ -51,7 +49,7 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
     public Optional<NewsModel> readById(Long id) {
         NewsModelResponse newsModelResponse = new NewsModelResponse();
         listNews.forEach(x -> {
-             boolean b = x.getId().equals(id);
+            boolean b = x.getId().equals(id);
             if (b) newsModelResponse.map(x);
             if (b) newsModelResponse.print();
         });
@@ -71,7 +69,10 @@ public class NewsRepository implements BaseRepository<NewsModel, Long> {
     public NewsModel update(NewsModel entity) {
         NewsModelResponse newsModelResponse = new NewsModelResponse();
         listNews.forEach(x -> {
+            System.out.println("SZUKANE ID "+entity.getId());
+            System.out.println("ID: "+x.getId());
             boolean b = x.getId().equals(entity.getId());
+            if (b) System.out.println("MAM");
             if (b) x.setTitle(entity.getTitle());
             if (b) x.setContent(entity.getContent());
             if (b) x.setAuthorId(entity.getAuthorId());
