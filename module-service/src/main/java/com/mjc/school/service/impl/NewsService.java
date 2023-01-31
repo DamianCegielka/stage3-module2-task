@@ -6,8 +6,7 @@ import com.mjc.school.service.BaseService;
 import com.mjc.school.service.Validator;
 import com.mjc.school.service.dto.NewsDtoRequest;
 import com.mjc.school.service.dto.NewsDtoResponse;
-import com.mjc.school.service.mapping.MapNewsDtoRequestToNewsModel;
-import com.mjc.school.service.mapping.MapNewsModelToDtoResponse;
+import com.mjc.school.service.mapper.ModelDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +20,8 @@ public class NewsService implements BaseService<NewsDtoRequest, NewsDtoResponse,
     @Autowired
     BaseRepository<NewsModel, Long> repository;
 
-    private MapNewsModelToDtoResponse mapNewsModelToDtoResponse = new MapNewsModelToDtoResponse();
-    private MapNewsDtoRequestToNewsModel mapNewsDtoRequestToNewsModel = new MapNewsDtoRequestToNewsModel();
+    private ModelDtoMapper.MapNewsModelToDtoResponse mapNewsModelToDtoResponse = new ModelDtoMapper.MapNewsModelToDtoResponse();
+    private ModelDtoMapper.MapNewsDtoRequestToNewsModel mapNewsDtoRequestToNewsModel = new ModelDtoMapper.MapNewsDtoRequestToNewsModel();
     private Validator validator=new Validator();
 
 
