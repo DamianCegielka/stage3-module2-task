@@ -6,15 +6,15 @@ import com.mjc.school.controller.questions.AskQuestionsToGetNewsDtoRequest;
 import com.mjc.school.service.dto.NewsDtoRequest;
 import com.mjc.school.service.dto.NewsDtoResponse;
 
+import static com.mjc.school.controller.constans.Constants.CREATE_NEWS;
+
 public class CreateNewsCommand implements Command {
-    private static final String CREATE_NEWS = "Create news.";
     private final BaseController<NewsDtoRequest, NewsDtoResponse, Long> controller;
-    private final AskQuestionsToGetNewsDtoRequest question;
+    private final AskQuestionsToGetNewsDtoRequest question=new AskQuestionsToGetNewsDtoRequest();
 
 
-    public CreateNewsCommand(BaseController<NewsDtoRequest, NewsDtoResponse, Long> controller,AskQuestionsToGetNewsDtoRequest question) {
+    public CreateNewsCommand(BaseController<NewsDtoRequest, NewsDtoResponse, Long> controller) {
         this.controller = controller;
-        this.question= question;
     }
 
     @Override

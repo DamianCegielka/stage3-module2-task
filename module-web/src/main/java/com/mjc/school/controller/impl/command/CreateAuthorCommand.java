@@ -6,15 +6,14 @@ import com.mjc.school.controller.questions.AskQuestionsToGetAuthorDtoRequest;
 import com.mjc.school.service.dto.AuthorDtoRequest;
 import com.mjc.school.service.dto.AuthorDtoResponse;
 
-public class CreateAuthorCommand implements Command {
-    private static final String CREATE_AUTHOR = "Create author.";
-    private final BaseController<AuthorDtoRequest, AuthorDtoResponse, Long> controller;
-    private final AskQuestionsToGetAuthorDtoRequest question;
+import static com.mjc.school.controller.constans.Constants.CREATE_AUTHOR;
 
-    public CreateAuthorCommand(BaseController<AuthorDtoRequest, AuthorDtoResponse, Long> controller,
-                               AskQuestionsToGetAuthorDtoRequest question) {
+public class CreateAuthorCommand implements Command {
+    private final BaseController<AuthorDtoRequest, AuthorDtoResponse, Long> controller;
+    private final AskQuestionsToGetAuthorDtoRequest question=new AskQuestionsToGetAuthorDtoRequest();
+
+    public CreateAuthorCommand(BaseController<AuthorDtoRequest, AuthorDtoResponse, Long> controller) {
         this.controller = controller;
-        this.question = question;
     }
 
     @Override
