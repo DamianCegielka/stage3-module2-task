@@ -9,15 +9,16 @@ import com.mjc.school.service.dto.NewsDtoResponse;
 import org.springframework.stereotype.Component;
 
 public class ModelDtoMapper {
-    public static class MapAuthorDtoRequestToAuthorModel {
+    public static class MapAuthorDtoRequestToAuthorModel implements AuthorDtoRequestMapperToAuthorModel {
 
+        @Override
         public AuthorModel map(AuthorDtoRequest request) {
             AuthorModel authorModel = new AuthorModel();
             authorModel.setId(request.getId());
             authorModel.setName(request.getName());
             return authorModel;
         }
-
+        @Override
         public AuthorModel mapUpdate(AuthorDtoRequest request) {
             AuthorModel authorModel = new AuthorModel("empty");
             authorModel.setId(request.getId());
@@ -26,8 +27,9 @@ public class ModelDtoMapper {
         }
     }
 
-    public static class MapAuthorModelToAuthorDtoResponse {
+    public static class MapAuthorModelToAuthorDtoResponse implements AuthorModelMapperToAuthorDtoResponse {
 
+        @Override
         public AuthorDtoResponse map(AuthorModel authorModel){
             AuthorDtoResponse authorDtoResponse=new AuthorDtoResponse();
             authorDtoResponse.setId(authorModel.getId());
@@ -38,8 +40,9 @@ public class ModelDtoMapper {
         }
     }
 
-    public static class MapNewsDtoRequestToNewsModel {
+    public static class MapNewsDtoRequestToNewsModel implements NewsDtoRequestMapperToNewsModel {
 
+        @Override
         public NewsModel map(NewsDtoRequest request){
             NewsModel newsModel=new NewsModel();
             newsModel.setTitle(request.getTitle());
@@ -48,6 +51,7 @@ public class ModelDtoMapper {
             return newsModel;
         }
 
+        @Override
         public NewsModel mapUpdate(NewsDtoRequest request){
             NewsModel newsModel=new NewsModel("null");
             newsModel.setId(request.getId());
@@ -59,8 +63,9 @@ public class ModelDtoMapper {
     }
 
     @Component
-    public static class MapNewsModelToDtoResponse {
+    public static class MapNewsModelToDtoResponse implements NewsModelMapperToDtoResponse {
 
+        @Override
         public NewsDtoResponse map(NewsModel model){
             NewsDtoResponse newsDtoResponse=new NewsDtoResponse();
             newsDtoResponse.setId(model.getId());

@@ -20,6 +20,7 @@ subprojects {
 
     dependencies {
         implementation "org.springframework:spring-context:$springVersion"
+        implementation "org.mapstruct:mapstruct:1.5.3.Final"
 
         testImplementation "org.springframework:spring-test:$springVersion"
         testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiterVersion"
@@ -47,3 +48,4 @@ task repack(type: Jar, dependsOn: ':module-main:build') {
 repositories {
     mavenCentral()
 }
+

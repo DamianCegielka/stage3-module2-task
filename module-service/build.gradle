@@ -1,4 +1,6 @@
 dependencies {
     implementation project(':module-repository')
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.modelmapper:modelmapper:3.1.0'
 }

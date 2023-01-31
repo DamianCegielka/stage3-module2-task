@@ -6,6 +6,8 @@ import com.mjc.school.service.BaseService;
 import com.mjc.school.service.Validator;
 import com.mjc.school.service.dto.AuthorDtoRequest;
 import com.mjc.school.service.dto.AuthorDtoResponse;
+import com.mjc.school.service.mapper.AuthorDtoRequestMapperToAuthorModel;
+import com.mjc.school.service.mapper.AuthorModelMapperToAuthorDtoResponse;
 import com.mjc.school.service.mapper.ModelDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +22,8 @@ public class AuthorService implements BaseService<AuthorDtoRequest, AuthorDtoRes
     @Autowired
     BaseRepository<AuthorModel, Long> repository;
 
-    private ModelDtoMapper.MapAuthorModelToAuthorDtoResponse mapAuthorModelToAuthorDtoResponse = new ModelDtoMapper.MapAuthorModelToAuthorDtoResponse();
-    private ModelDtoMapper.MapAuthorDtoRequestToAuthorModel mapAuthorDtoRequestToAuthorModel = new ModelDtoMapper.MapAuthorDtoRequestToAuthorModel();
+    private AuthorModelMapperToAuthorDtoResponse mapAuthorModelToAuthorDtoResponse = new ModelDtoMapper.MapAuthorModelToAuthorDtoResponse();
+    private AuthorDtoRequestMapperToAuthorModel mapAuthorDtoRequestToAuthorModel = new ModelDtoMapper.MapAuthorDtoRequestToAuthorModel();
     private Validator validator = new Validator();
 
     public AuthorService(BaseRepository<AuthorModel, Long> repository) {
